@@ -1,0 +1,31 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"description": "邀请人用户 ID"
+		},
+		"invited_id": {
+			"description": "被邀请人用户 ID"
+		},
+		"status": {
+			"description": "邀请状态"
+		},
+		"score": {
+			"description": "邀请获得积分"
+		},
+		"create_at": {
+			"description": "邀请时间"
+		}
+	}
+}

@@ -1,0 +1,130 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"openid": {
+			"title": "openid",
+			"bsonType": "string",
+			"description": "微信openid",
+			"trim": "both"
+		},
+		"unionid": {
+			"title": "unionid",
+			"bsonType": "string",
+			"description": "微信unionid",
+			"trim": "both"
+		},
+		"name": {
+			"title": "用户昵称",
+			"bsonType": "string",
+			"description": "用户昵称",
+			"trim": "both"
+		},
+		"mobile": {
+			"title": "用户手机",
+			"bsonType": "int",
+			"description": "用户手机"
+		},
+		"avatar": {
+			"title": "用户头像",
+			"bsonType": "string",
+			"description": "用户头像",
+			"trim": "both"
+		},
+		"score": {
+			"title": "用户积分",
+			"bsonType": "int",
+			"description": "用户积分"
+		},
+		"mp": {
+			"title": "注册平台",
+			"bsonType": "string",
+			"description": "注册平台",
+			"trim": "both"
+		},
+		"level": {
+			"title": "用户等级",
+			"bsonType": "int",
+			"description": "用户等级"
+		},
+		"originAvatar": {
+			"title": "用户原头像",
+			"bsonType": "string",
+			"description": "用户原头像",
+			"trim": "both"
+		},
+		"status": {
+			"title": "状态",
+			"bsonType": "int",
+			"description": "状态",
+			"enum": [{
+					"value": 1,
+					"text": "正常"
+				},
+				{
+					"value": 0,
+					"text": "未授权"
+				},
+				{
+					"value": -1,
+					"text": "删除"
+				}
+			]
+		},
+		"last_login_time": {
+			"title": "最后登陆",
+			"bsonType": "timestamp",
+			"description": "最后一次登陆时间",
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"create_at": {
+			"title": "创建时间",
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"update_at": {
+			"title": "更新时间",
+			"bsonType": "timestamp",
+			"description": "更新时间",
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

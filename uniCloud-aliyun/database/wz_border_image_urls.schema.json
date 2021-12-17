@@ -1,0 +1,111 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": ["image"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title": {
+			"title": "边框名称",
+			"bsonType": "string",
+			"description": "边框名称",
+			"trim": "both"
+		},
+		"origin": {
+			"bsonType": "file",
+			"title": "图片",
+			"description": "边框图片",
+			"fileMediaType": "image",
+			"fileExtName": "jpg,png",
+			"componentForShow": {
+				"name": "image"
+			}
+		},
+		"type": {
+			"bsonType": "int",
+			"title": "分类",
+			"description": "分类",
+			"foreignKey": "wz_border_image_category.type",
+			"enum": {
+				"collection": "wz_border_image_category",
+				"field": "name as text, type as value",
+				"where": "status == 1 && type > 0",
+				"orderby": "sort asc"
+			}
+		},
+		"hot": {
+			"title": "热门推荐",
+			"bsonType": "int",
+			"description": "是否热门推荐",
+			"enum": [{
+					"value": 1,
+					"text": "推荐"
+				},
+				{
+					"value": 0,
+					"text": "不推荐"
+				}
+			]
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "值越大越靠后",
+			"title": "排序"
+		},
+		"status": {
+			"title": "状态",
+			"bsonType": "int",
+			"description": "状态",
+			"enum": [{
+					"value": 1,
+					"text": "启用"
+				},
+				{
+					"value": 0,
+					"text": "不启用"
+				},
+				{
+					"value": -1,
+					"text": "删除"
+				}
+			]
+		},
+		"create_at": {
+			"title": "创建时间",
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"update_at": {
+			"title": "更新时间",
+			"bsonType": "timestamp",
+			"description": "更新时间",
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

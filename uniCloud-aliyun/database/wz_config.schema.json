@@ -1,0 +1,122 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": ["name", "key"],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "配置名称",
+			"title": "配置名称"
+		},
+		"key": {
+			"description": "配置 KEY 值",
+			"bsonType": "string",
+			"title": "配置 KEY 值"
+		},
+		"datatype": {
+			"bsonType": "string",
+			"title": "数据类型",
+			"enum": [{
+					"value": "string",
+					"text": "字符串"
+				},
+				{
+					"value": "int",
+					"text": "数字"
+				},
+				{
+					"value": "json",
+					"text": "JSON"
+				},
+				{
+					"value": "file",
+					"text": "文件"
+				},
+				{
+					"value": "html",
+					"text": "富文本"
+				},
+				{
+					"value": "bool",
+					"text": "开关"
+				}
+			],
+			"defaultValue": "string"
+		},
+		"val": {
+			"description": "配置 VALUE 值",
+			"title": "配置 VALUE 值"
+		},
+		"label": {
+			"bsonType": "string",
+			"title": "关联项目",
+			"foreignKey": "wz_project.appid",
+			"enum": {
+				"collection": "wz_project",
+				"field": "name as text, appid as value",
+				"where": "status == 1",
+				"orderby": "sort asc"
+			},
+			"defaultValue": "system"
+		},
+
+		"status": {
+			"title": "状态",
+			"bsonType": "int",
+			"description": "状态",
+			"enum": [{
+					"value": 1,
+					"text": "正常"
+				},
+				{
+					"value": 0,
+					"text": "禁用"
+				},
+				{
+					"value": -1,
+					"text": "删除"
+				}
+			],
+			"defaultValue": 1
+		},
+		"create_at": {
+			"title": "创建时间",
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"update_at": {
+			"title": "更新时间",
+			"bsonType": "timestamp",
+			"description": "更新时间",
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"componentForShow": {
+				"name": "uni-dateformat"
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

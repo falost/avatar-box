@@ -1,0 +1,21 @@
+{
+	"name": "getAccessToken",
+	"version": "1.0.0",
+	"description": "获取token",
+	"main": "index.js",
+	"dependencies": {
+		"utils": "file:../common/utils"
+	},
+	"cloudfunction-config": {
+		"memorySize": 256,
+		"timeout": 5,
+		"triggers": [
+			{
+				"name": "getAccessToken",
+				"type": "timer",
+				"config": "0 0 */2 * * * *"
+			}
+		],
+		"path": ""
+	}
+}

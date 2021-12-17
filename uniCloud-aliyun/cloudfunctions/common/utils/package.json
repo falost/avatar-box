@@ -1,0 +1,11 @@
+{
+  "name": "utils",
+  "version": "0.1.1",
+  "description": "utils",
+  "main": "index.js",
+  "repository": {
+    "type": "git"
+  },
+  "author": "falost",
+  "license": "Apache-2.0"
+}

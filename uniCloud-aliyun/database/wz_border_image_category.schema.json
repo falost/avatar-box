@@ -1,0 +1,70 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"type": {
+			"bsonType": "int",
+			"title": "分类ID",
+			"description": "分类ID"
+		},
+		"name": {
+			"title": "分类名称",
+			"bsonType": "string",
+			"description": "分类名称",
+			"trim": "both"
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "值越大越靠后",
+			"title": "排序"
+		},
+		"status": {
+			"title": "状态",
+			"bsonType": "int",
+			"description": "状态",
+			"enum": [{
+					"value": 1,
+					"text": "启用"
+				},
+				{
+					"value": 0,
+					"text": "不启用"
+				}
+			]
+		},
+		"create_at": {
+			"title": "创建时间",
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"update_at": {
+			"title": "更新时间",
+			"bsonType": "timestamp",
+			"description": "更新时间",
+			"permission": {
+				"read": true,
+				"write": false
+			},
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

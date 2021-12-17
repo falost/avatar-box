@@ -1,0 +1,16 @@
+{
+	"name": "sec_ckeck",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"uni-config-center": "file:../../../uni_modules/uni-config-center/uniCloud/cloudfunctions/common/uni-config-center",
+		"uni-sec-check": "file:../../../uni_modules/uni-sec-check/uniCloud/cloudfunctions/common/uni-sec-check",
+		"utils": "file:../common/utils"
+	}
+}

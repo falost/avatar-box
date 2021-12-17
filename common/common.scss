@@ -1,0 +1,42 @@
+.uni-page-head {
+  border-bottom: 1px solid $borderColor;
+}
+
+.official-account {
+  position: fixed;
+  top: 1%;
+  left: 1%;
+  width: 98%;
+}
+.block-title {
+  padding: 10px 15px;
+}
+.empty {
+  padding: 25px 15px;
+  text-align: center;
+}
+.banner-ad {
+	max-width: calc(100% - 20px);
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.custom-header {
+  position: fixed;
+  top: 0%;
+	width: 100%;
+	height: 60px;
+	z-index: 9999;
+}
+.contact {
+	background: none;
+	color: #888;
+	border: none;
+	padding: 0;
+	line-height: 14px;
+	border-radius: 0;
+	&::after {
+		display: none;
+	}
+}

@@ -1,0 +1,75 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"subPackages": [{
+			"root": "pages/public",
+			"pages": [{
+				"path": "camera/camera",
+				"style": {
+					"navigationBarTitleText": "裁剪图片",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+
+			}]
+		},
+		{
+			"root": "pages/avatar",
+			"pages": [{
+				"path": "index",
+				"style": {
+					"navigationBarTitleText": "头像挂件助手",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "edit",
+				"style": {
+					"navigationBarTitleText": "自定义挂件",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "diy",
+				"style": {
+					"navigationBarTitleText": "自定义头像",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "result",
+				"style": {
+					"navigationBarTitleText": "生成成功",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+
+			}]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"usingComponents": {
+			"image-cropper": "/wxcomponents/image-cropper/image-cropper"
+		}
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@/components/uni-$1/uni-$1.vue", // 匹配components目录内的vue文件
+			"^fui-(.*)": "@/components/fui-$1/fui-$1.vue",
+			"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+		}
+	}
+}

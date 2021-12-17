@@ -1,0 +1,320 @@
+
+
+a {
+  text-decoration: none;
+  // -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+  -moz-user-focus: none;
+	-moz-user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+}
+.fui {
+	&-flex {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		// 定义flex等分
+		@for $i from 1 through 12 {
+			.fx#{$i} {
+				flex: $i;
+			}
+		}
+	}
+
+	&-flex-left {
+		justify-content: flex-start;
+		align-items: center;
+		@extend .#{$name}-flex;
+	}
+	
+	&-flex-left-bottom{
+		justify-content: flex-start;
+		align-items: flex-end;
+		@extend .#{$name}-flex;
+	}
+	&-flex-bottom {
+		align-items: flex-end;
+		@extend .#{$name}-flex;
+	}
+	&-flex-right {
+		justify-content: flex-end;
+		align-items: center;
+		@extend .#{$name}-flex;
+	}
+	
+	&-flex-right-bottom{
+		justify-content: flex-end;
+		align-items: flex-end;
+		@extend .#{$name}-flex;
+	}
+
+	&-flex-center {
+		justify-content: center;
+		align-items: center;
+		@extend .#{$name}-flex;
+	}
+	
+	&-flex-center-x {
+		justify-content: center;
+		@extend .#{$name}-flex;
+	}
+	
+	&-flex-center-y {
+		align-items: center;
+		@extend .#{$name}-flex;
+	}
+	&-flex-row-between {
+		justify-content: space-between;
+		@extend .#{$name}-flex;
+	}
+	&-flex-row-around {
+		justify-content: space-around;
+		@extend .#{$name}-flex;
+	}
+	&-flex-wrap {
+		flex-wrap: wrap;
+	}
+	&-flex-self-center-y {
+		align-self: center;
+		@extend .#{$name}-flex;
+	}
+	&-flex-col {
+		flex-direction: column;
+		@extend .#{$name}-flex;
+	}
+	&-flex-between {
+    justify-content: space-between;
+		@extend .#{$name}-flex;
+	}
+	&-vam {
+		vertical-align: middle;
+	}
+	&-tar {
+		text-align: right;
+	}
+	&-tal {
+		text-align: left;
+	}
+	&-tac {
+		text-align: center;
+	}
+	&-bk {
+		display: block;
+	}
+	&-csp {
+		cursor: pointer;
+	}
+	&-wsn {
+		white-space: normal;
+	}
+	&-ellipsis {
+		overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	}
+	&-ovh {
+		overflow: hidden;
+	}
+	&-hide {
+		display: none;
+	}
+	@each $short, $long in l left, t top, r right, b bottom {
+		&-line-#{$short} {
+			border-#{$long}: 1px solid $borderColor;
+		}
+	}
+	// 定义字体加粗
+	@for $i from 300 through 800 {
+		@if $i % 100 == 0 {
+			@include fontWeight($i);
+		}
+	}
+	&-fwb {
+		font-weight: bold;
+	}
+	@include fontSize(0);
+	@for $i from 9 through 36 {
+		@include fontSize($i);
+	}
+	
+	// 定义内外边距，历遍1-80
+	@for $i from 0 through 30 {
+		// 只要能被5除尽的数
+		@if $i % 5 == 0 {
+			// 得出：m5 或 m30
+			&-m#{$i} {
+				margin: $i + px;
+			}
+			
+			// 得出：p5 或 p30
+			&-p#{$i} {
+				padding: $i + px;
+			}
+			
+			@each $short, $long in l left, t top, r right, b bottom {
+				@include padding(p#{$short}#{$i}, #{$long}, $i + px);
+				@include margin(m#{$short}#{$i}, #{$long}, $i + px);
+			}
+		}
+	}
+	
+	@include bgc(master, $themeColor);
+	@include bgc(xuanzhi, $xuanzhi);
+	@include bgc(fff, #fff);
+	@include bgc(danger, #FE5E3D);
+	@include bgc(warning, #F89901);
+	@include bgc('pink', #FFB3B3);
+	@include bgc(info, #3e83e5);
+	@include bgc(success, #47CF8A);
+	@include bgc(f1f, #f1f1f1);
+	@include bgc(bbb, #bbb);
+	@include bgc(ccc, #ccc);
+	@include bgc(ddd, #ddd);
+	@include bgc(999, #999);
+	@include bgc(666, #666);
+	@include bgc(333, #333);
+	
+	@include color(theme, $themeColor);
+	@include color(mose, $mose);
+	@include color(master, $themeFontColor);
+	@include color(lanse, $lanse);
+	@include color(aux, $auxFontColor);
+	@include color(danger, #FE5E3D);
+	@include color(warning, #F89901);
+	@include color('pink', #FFB3B3);
+	@include color(info, #3e83e5);
+	@include color(success, #47CF8A);
+	@include color(bbb, #bbb);
+	@include color(ccc, #ccc);
+	@include color(ddd, #ddd);
+	@include color(999, #999);
+	@include color(888, #888);
+	@include color(666, #666);
+	@include color(333, #333);
+	@include color(222, #222);
+	@include color(000, #000);
+	@include color(fff, #fff);
+	@include color(tips, #909399);
+
+	
+}
+button {
+	display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+	font-weight: 500;
+	&[disabled] {
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+	&[type="default"] {
+		background: #EEF2F5;
+		border-color: #EEF2F5;
+		color: #5B627A;
+		&:focus,
+		&:hover {
+			background: #E5EAEF;
+			border-color: #E5EAEF;
+			color: #5B627A;
+		}
+	}
+	&[type="info"]{
+		background: #162041;
+		border-color: #162041;
+		color: #fff;
+		&:focus,
+		&:hover {
+			background:#454D67;
+			border-color: #454D67;
+			color: #fff;
+		}
+	}
+	&[type="draft"] {
+		background:#A1A5B2;
+		border-color: #A1A5B2;
+		color: #fff;
+		&:focus, &:hover{
+			background:#A1A5B2;
+			border-color: #A1A5B2;
+			color: #fff;
+		}
+	}
+	&[type="danger"] {
+		background: #FF6C6C;
+		border-color: #FF6C6C;
+		color: #fff;
+		&:focus, &:hover{  
+			background: #FF8989;
+			border-color: #FF8989;
+			color: #fff;
+		}
+	}
+	
+	&[type="success"] {
+		background: #56C794;
+		border-color: #56C794;
+		color: #fff;
+		&:focus, &:hover{
+			background: #77D2A9;
+			border-color: #77D2A9;
+			color: #fff;
+		}
+	}
+	
+	&[type="primary"] {
+		background: #409EFF;
+		border-color: #409EFF;
+		color: #fff;
+		&:focus, &:hover{
+			background: #65B1FF;
+			border-color: #65B1FF;
+			color: #fff;
+		}
+	}
+	
+	&[type="warning"] {
+		background: #ff976a;
+		border-color: #ff976a;
+		color: #fff;
+		&:focus, &:hover{
+			background: #ff976a;
+			border-color: #ff976a;
+			color: #fff;
+		}
+	}
+	&[size=mini] {
+		height: 32px;
+		line-height: 32px;
+		padding: 0 8px;
+		font-size: 12px;
+	}
+	&[size=small] {
+		height: 38px;
+		line-height: 38;
+		padding: 0 10px;
+		font-size: 14px;
+	}
+	&.#{$name}-btn_medium {
+		padding: 0px 16px;
+		height: 42px
+	}
+	&.master-btn {
+		background-color: transparent;
+		background-image: linear-gradient(45deg, rgba(#50616d, 0.6), rgba(#495a80, 0.8));
+		color: #fff;
+		border: 1px solid;
+		border-image: linear-gradient(0deg, rgba(#50616d, 0.8), rgba(#495a80, 1));
+		&::after {
+			border-image: linear-gradient(0deg, rgba(#50616d, 1), rgba(#495a80, 1));
+		}
+		&:hover {
+			background-image: linear-gradient(45deg, rgba(#50616d, 0.8), rgba(#495a80, 1));
+		}
+	}
+}
