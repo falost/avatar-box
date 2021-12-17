@@ -10,7 +10,6 @@ const DEV = process.env.NODE_ENV === 'development'
 // ERP 主系统接口地址
 const DEV_URL = 'http://127.0.0.1:7001'
 const PRO_URL = ''
-// const STATIC_DEV = 'http://poo.static.dev.yunketang.club'
 const STATIC_DEV = ''
 const STATIC_PRO = ''
 
