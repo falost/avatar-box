@@ -1,7 +1,7 @@
 <template>
 	<fui-page class="fui-flex fui-flex-col">
 		<view class="body">
-			<u-navbar v-if="!isHome" :border-bottom="false" safeAreaInsetTop :fixed="false" bgColor="rgba(0,0,0,0)" @leftClick="$back">
+			<u-navbar :border-bottom="false" safeAreaInsetTop :fixed="false" bgColor="rgba(0,0,0,0)" @leftClick="$back">
 				<view slot="left">
 					<u-icon
 						name="arrow-left"

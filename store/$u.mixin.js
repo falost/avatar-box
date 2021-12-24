@@ -143,7 +143,7 @@ module.exports = {
 						this.$u.vuex('vuex_avatar', result.data.avatar)
 						this.$u.vuex('isLogin', result.data.status > 0)
 						this.$store.dispatch('setToken', result.data._id)
-						reslove(result.data._id)
+						reslove(result.data)
 					} else {
 						this.$toast(result.msg)
 						reject()

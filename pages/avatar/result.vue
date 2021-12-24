@@ -1,7 +1,7 @@
 <template>
 	<fui-page class="fui-flex fui-flex-col">
 		<view class="body">
-			<u-navbar v-if="!isHome" :border-bottom="false" :background="background" :back-icon-color="color"></u-navbar>
+		<u-navbar :title="title || ''" :bgColor="background.backgroundColor" safeAreaInsetTop :fixed="false" :title-color="color" @leftClick="$back"></u-navbar>
 			<view class="page-bg">
 				<image :src="backgroundImg" mode=""></image>
 			</view>
