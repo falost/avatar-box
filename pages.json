@@ -53,7 +53,28 @@
 				}
 
 			}]
-		}
+		},
+		{
+			"root": "red_cover",
+			"pages": [
+				{
+				"path": "pages/index",
+				"style": {
+					"navigationBarTitleText": "红包封面",
+					// "enablePullDownRefresh": true,
+					"navigationStyle": "custom",
+					"onReachBottomDistance": 150
+				}
+			},{
+				"path": "pages/detail",
+				"style": {
+					"navigationBarTitleText": "红包封面详情",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}
+			]
+		},
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
