@@ -1,5 +1,711 @@
-// 在本文件中可配置云数据库初始化，数据格式见：https://uniapp.dcloud.io/uniCloud/hellodb?id=db-init
-// 编写完毕后对本文件点右键，可按配置规则创建表和添加数据
 {
-
+    "wz_border_image_category": {
+        "data": [],
+        "schema": {
+            "bsonType": "object",
+            "required": [],
+            "permission": {
+                "read": false,
+                "create": false,
+                "update": false,
+                "delete": false
+            },
+            "properties": {
+                "_id": {
+                    "description": "ID，系统自动生成"
+                },
+                "type": {
+                    "bsonType": "int",
+                    "title": "分类ID",
+                    "description": "分类ID"
+                },
+                "name": {
+                    "title": "分类名称",
+                    "bsonType": "string",
+                    "description": "分类名称",
+                    "trim": "both"
+                },
+                "fontColor": {
+                    "title": "字体颜色",
+                    "bsonType": "string",
+                    "description": "字体颜色",
+                    "trim": "both"
+                },
+                "subTitle": {
+                    "title": "副标题",
+                    "bsonType": "string",
+                    "description": "副标题",
+                    "trim": "both"
+                },
+                "logo": {
+                    "title": "logo",
+                    "bsonType": "string",
+                    "description": "logo",
+                    "trim": "both"
+                },
+                "backgroundImg": {
+                    "title": "背景图片",
+                    "bsonType": "string",
+                    "description": "背景图片",
+                    "trim": "both"
+                },
+                "sort": {
+                    "bsonType": "int",
+                    "description": "值越大越靠后",
+                    "title": "排序"
+                },
+                "status": {
+                    "title": "状态",
+                    "bsonType": "int",
+                    "description": "状态",
+                    "enum": [
+                        {
+                            "value": 1,
+                            "text": "启用"
+                        },
+                        {
+                            "value": 0,
+                            "text": "不启用"
+                        },
+                        {
+                            "value": -1,
+                            "text": "删除"
+                        }
+                    ]
+                },
+                "create_at": {
+                    "title": "创建时间",
+                    "bsonType": "timestamp",
+                    "description": "创建时间",
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                },
+                "update_at": {
+                    "title": "更新时间",
+                    "bsonType": "timestamp",
+                    "description": "更新时间",
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                }
+            }
+        }
+    },
+    "wz_border_image_urls": {
+        "data": [],
+				"schema": {
+            "bsonType": "object",
+            "required": [
+                "image"
+            ],
+            "permission": {
+                "read": true,
+                "create": false,
+                "update": false,
+                "delete": false
+            },
+            "properties": {
+                "_id": {
+                    "description": "ID，系统自动生成"
+                },
+                "title": {
+                    "title": "边框名称",
+                    "bsonType": "string",
+                    "description": "边框名称",
+                    "trim": "both"
+                },
+                "origin": {
+                    "bsonType": "file",
+                    "title": "图片",
+                    "description": "边框图片",
+                    "fileMediaType": "image",
+                    "fileExtName": "jpg,png",
+                    "componentForShow": {
+                        "name": "image"
+                    }
+                },
+                "type": {
+                    "bsonType": "int",
+                    "title": "分类",
+                    "description": "分类",
+                    "foreignKey": "wz_border_image_category.type",
+                    "enum": {
+                        "collection": "wz_border_image_category",
+                        "field": "name as text, type as value",
+                        "where": "type > 0",
+                        "orderby": "sort asc"
+                    }
+                },
+                "hot": {
+                    "title": "热门推荐",
+                    "bsonType": "int",
+                    "description": "是否热门推荐",
+                    "enum": [
+                        {
+                            "value": 1,
+                            "text": "推荐"
+                        },
+                        {
+                            "value": 0,
+                            "text": "不推荐"
+                        }
+                    ]
+                },
+                "sort": {
+                    "bsonType": "int",
+                    "description": "值越大越靠后",
+                    "title": "排序"
+                },
+                "canEdit": {
+                    "title": "启用编辑",
+                    "bsonType": "int",
+                    "description": "是否可以进行位置调整",
+                    "enum": [
+                        {
+                            "value": 1,
+                            "text": "启用"
+                        },
+                        {
+                            "value": 0,
+                            "text": "不启用"
+                        }
+                    ]
+                },
+                "status": {
+                    "title": "状态",
+                    "bsonType": "int",
+                    "description": "状态",
+                    "enum": [
+                        {
+                            "value": 1,
+                            "text": "启用"
+                        },
+                        {
+                            "value": 0,
+                            "text": "不启用"
+                        },
+                        {
+                            "value": -1,
+                            "text": "删除"
+                        }
+                    ]
+                },
+                "create_at": {
+                    "title": "创建时间",
+                    "bsonType": "timestamp",
+                    "description": "创建时间",
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                },
+                "update_at": {
+                    "title": "更新时间",
+                    "bsonType": "timestamp",
+                    "description": "更新时间",
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                }
+            }
+        }
+    },
+    "wz_config": {
+        "data": [
+            {
+                "_id": {
+                    "$oid": "615538f9be6f97000165625f"
+                },
+                "key": "wxSecret",
+                "val": "",
+                "name": "微信小程序AppSecret",
+                "datatype": "string",
+                "label": "",
+                "status": 1,
+                "update_at": 1635147510009
+            },
+            {
+                "_id": {
+                    "$oid": "6155390dc0cd1a0001d08917"
+                },
+                "key": "wxAppId",
+                "val": "",
+                "name": "微信小程序AppID",
+                "datatype": "string",
+                "label": "",
+                "status": 1,
+                "update_at": 1635147504156
+            },
+            {
+                "_id": {
+                    "$oid": "61553928618ecb0001f5f496"
+                },
+                "key": "inviteIntegral",
+                "val": 10,
+                "name": "邀请奖励积分",
+                "datatype": "int",
+                "label": "",
+                "status": 1,
+                "update_at": 1634545806710
+            },
+            {
+                "_id": {
+                    "$oid": "6155f1f89157120001e0f4b2"
+                },
+                "key": "access_token",
+                "name": "系统token（勿动）",
+                "val": "",
+                "updateAt": 1633096813300,
+                "create_at": 1634529614005,
+                "label": "",
+                "status": 1,
+                "datatype": "string",
+                "update_at": 1639908017015
+            },
+            {
+                "_id": {
+                    "$oid": "6159698976f2550001bec606"
+                },
+                "key": "bannerAdId",
+                "title": "",
+                "val": "",
+                "name": "banner 广告 ID 配置",
+                "datatype": "string",
+                "label": "",
+                "status": 1
+            },
+            {
+                "_id": {
+                    "$oid": "616ce1e2531f7c000189377a"
+                },
+                "key": "borderBackgroundImg",
+                "val": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-298ded81-a496-47bd-a034-ccc7f0b4eb56/64d4e550-26d8-4ad0-b827-dc25ec7bdc08.jpg",
+                "name": "头像挂件背景图",
+                "label": "border",
+                "status": 1,
+                "create_at": null,
+                "update_at": 1639323891169,
+                "datatype": "file"
+            },
+            {
+                "_id": {
+                    "$oid": "616ce207618ecb0001ad2d6d"
+                },
+                "key": "subTitle",
+                "val": "领取专属于你的圣诞元素头像",
+                "name": "头像挂件副标题",
+                "label": "border",
+                "status": 1,
+                "create_at": 1634525701316,
+                "update_at": 1639323966466,
+                "datatype": ""
+            },
+            {
+                "_id": {
+                    "$oid": "616ce29d9ee65f000168c976"
+                },
+                "key": "borderLogo",
+                "val": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-298ded81-a496-47bd-a034-ccc7f0b4eb56/28dd9dc2-0e4a-4a00-880d-0203845d1590.png",
+                "name": "头像挂件 logo",
+                "label": "border",
+                "status": 0,
+                "create_at": 1634525853137,
+                "update_at": 1639323911420,
+                "datatype": "file"
+            },
+            {
+                "_id": {
+                    "$oid": "616ce2b712592600012a3187"
+                },
+                "key": "borderShreTitle",
+                "name": "头像挂件分享标题",
+                "label": "border",
+                "status": 1,
+                "create_at": 1634525879353,
+                "update_at": 1634525879353,
+                "val": [
+                    "@官方，请给我一个头像挂件~",
+                    "你的好友@你，这里有一个头像挂件等你查收~",
+                    "好玩又好看的头像生成工具，快来试试新玩法~",
+                    "我使用这个小程序生成了一个新的头像，你也来试试吧~",
+                    "{username}邀请你来体验全网最火的国旗渐变头像~"
+                ],
+                "datatype": "json"
+            },
+            {
+                "_id": {
+                    "$oid": "616ce8b28b76c1000180cc61"
+                },
+                "key": "borderFontColor",
+                "val": "#FBD39A",
+                "name": "头像挂件字体主色",
+                "label": "border",
+                "status": 1,
+                "create_at": 1634527410671,
+                "update_at": 1634527410671,
+                "datatype": "string"
+            },
+            {
+                "_id": {
+                    "$oid": "616e484c1259260001312c06"
+                },
+                "datatype": "html",
+                "label": "border",
+                "status": 1,
+                "key": "instructions",
+                "val": "<p>1、第一次使用，请点击“获取头像”;</p>\n<p>2、“重新获取”可以获取最新微信头像;</p>\n<p>3、“获取原头像”可以得到上一次微信授权获得的头像;</p>\n<p>4、“相册/拍照”可以上传本地图片进行制作，禁止上传违规图片内容，否则封禁账号;</p>\n<p>5、“保存头像”可以将左侧展示头像保存到相册;</p>\n<p>6、如有使用问题，可以点击下面联系客服入口进行反馈;</p>\n<p>7、边框素材来源网络，如有侵权，请联系删除。</p>\n<p>8、如果保存失败，请点击<b> ··· </b>选择重进入小程序即可正常使用。或者重新获取即可。",
+                "name": "头像挂件使用说明",
+                "create_at": 1634617418821,
+                "update_at": 1639807617909
+            },
+            {
+                "_id": {
+                    "$oid": "6171457d817bc50001c7cb1e"
+                },
+                "datatype": "string",
+                "label": "",
+                "status": 1,
+                "key": "defaultIndex",
+                "val": "/pages/avatar/index",
+                "name": "默认首页",
+                "create_at": 1634813308945,
+                "update_at": 1635316158385
+            },
+            {
+                "_id": {
+                    "$oid": "61766b116e07140001c51c41"
+                },
+                "datatype": "file",
+                "label": "",
+                "status": 1,
+                "key": "accountQrcode",
+                "name": "公众号二维码",
+                "val": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-298ded81-a496-47bd-a034-ccc7f0b4eb56/ab3b0bbc-ecbb-41cd-bbfc-22fbc02d0771.jpg",
+                "create_at": 1635150609622,
+                "update_at": 1635155843403
+            },
+            {
+                "_id": {
+                    "$oid": "617fbd7696cef20001df9ba9"
+                },
+                "datatype": "file",
+                "label": "border",
+                "status": 1,
+                "key": "borderResultBackgroundImg",
+                "name": "头像挂件结果边框",
+                "val": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-298ded81-a496-47bd-a034-ccc7f0b4eb56/0fdd0dee-052f-4cd4-b12f-edf58c93d31f.png",
+                "create_at": 1635761526328,
+                "update_at": 1635761526328
+            },
+            {
+                "_id": {
+                    "$oid": "617fbee270a1270001e1b921"
+                },
+                "datatype": "string",
+                "label": "border",
+                "status": 1,
+                "key": "borderResultFontColor",
+                "val": "#333",
+                "name": "头像边框结果页字体颜色",
+                "create_at": 1635761889930,
+                "update_at": 1635761889930
+            }
+        ],
+        "schema": {
+            "bsonType": "object",
+            "required": [
+                "name",
+                "key"
+            ],
+            "permission": {
+                "read": false,
+                "create": false,
+                "update": false,
+                "delete": false
+            },
+            "properties": {
+                "_id": {
+                    "description": "ID，系统自动生成"
+                },
+                "name": {
+                    "bsonType": "string",
+                    "description": "配置名称",
+                    "title": "配置名称"
+                },
+                "key": {
+                    "description": "配置 KEY 值",
+                    "bsonType": "string",
+                    "title": "配置 KEY 值"
+                },
+                "datatype": {
+                    "bsonType": "string",
+                    "title": "数据类型",
+                    "enum": [
+                        {
+                            "value": "string",
+                            "text": "字符串"
+                        },
+                        {
+                            "value": "int",
+                            "text": "数字"
+                        },
+                        {
+                            "value": "json",
+                            "text": "JSON"
+                        },
+                        {
+                            "value": "file",
+                            "text": "文件"
+                        },
+                        {
+                            "value": "html",
+                            "text": "富文本"
+                        },
+                        {
+                            "value": "bool",
+                            "text": "开关"
+                        }
+                    ],
+                    "defaultValue": "string"
+                },
+                "val": {
+                    "description": "配置 VALUE 值",
+                    "title": "配置 VALUE 值"
+                },
+                "label": {
+                    "bsonType": "string",
+                    "title": "关联项目",
+                    "foreignKey": "wz_project.appid",
+                    "enum": {
+                        "collection": "wz_project",
+                        "field": "name as text, appid as value",
+                        "where": "status == 1",
+                        "orderby": "sort asc"
+                    },
+                    "defaultValue": "system"
+                },
+                "status": {
+                    "title": "状态",
+                    "bsonType": "int",
+                    "description": "状态",
+                    "enum": [
+                        {
+                            "value": 1,
+                            "text": "正常"
+                        },
+                        {
+                            "value": 0,
+                            "text": "禁用"
+                        },
+                        {
+                            "value": -1,
+                            "text": "删除"
+                        }
+                    ],
+                    "defaultValue": 1
+                },
+                "create_at": {
+                    "title": "创建时间",
+                    "bsonType": "timestamp",
+                    "description": "创建时间",
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                },
+                "update_at": {
+                    "title": "更新时间",
+                    "bsonType": "timestamp",
+                    "description": "更新时间",
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                }
+            }
+        }
+    },
+    "wz_user": {
+        "data": [
+            {
+                "_id": "6155693f8b76c10001cb2e25",
+                "openid": "oTnOI5DOPkuemL0xCMQ4vkccuZLA",
+                "name": "圆。",
+                "avatar": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJlLmHNjThjiamoo52fBFov6g5KMtPXmib2sN1z9WqEdrSnuB51qGWheWBoqaS8KQw9q55nmMVKebvw/0",
+                "score": 610,
+                "status": 1,
+                "mp": "weixin",
+                "create_at": 1632987455028,
+                "level": 1,
+                "originAvatar": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-298ded81-a496-47bd-a034-ccc7f0b4eb56/a296b5d8-b73b-4bae-81fa-cf8a4b55f6d2.jpeg",
+                "unionid": "oRMaWwDuf0K6dUyEUWmLQQZStpAE",
+                "last_login_time": 1639907882701,
+                "update_at": 1639746719087
+            }
+        ],
+        "schema": {
+            "bsonType": "object",
+            "required": [],
+            "permission": {
+                "read": false,
+                "create": false,
+                "update": false,
+                "delete": false
+            },
+            "properties": {
+                "_id": {
+                    "description": "ID，系统自动生成"
+                },
+                "openid": {
+                    "title": "openid",
+                    "bsonType": "string",
+                    "description": "微信openid",
+                    "trim": "both"
+                },
+                "unionid": {
+                    "title": "unionid",
+                    "bsonType": "string",
+                    "description": "微信unionid",
+                    "trim": "both"
+                },
+                "name": {
+                    "title": "用户昵称",
+                    "bsonType": "string",
+                    "description": "用户昵称",
+                    "trim": "both"
+                },
+                "mobile": {
+                    "title": "用户手机",
+                    "bsonType": "int",
+                    "description": "用户手机"
+                },
+                "avatar": {
+                    "title": "用户头像",
+                    "bsonType": "string",
+                    "description": "用户头像",
+                    "trim": "both"
+                },
+                "score": {
+                    "title": "用户积分",
+                    "bsonType": "int",
+                    "description": "用户积分"
+                },
+                "mp": {
+                    "title": "注册平台",
+                    "bsonType": "string",
+                    "description": "注册平台",
+                    "trim": "both"
+                },
+                "level": {
+                    "title": "用户等级",
+                    "bsonType": "int",
+                    "description": "用户等级"
+                },
+                "originAvatar": {
+                    "title": "用户原头像",
+                    "bsonType": "string",
+                    "description": "用户原头像",
+                    "trim": "both"
+                },
+                "status": {
+                    "title": "状态",
+                    "bsonType": "int",
+                    "description": "状态",
+                    "enum": [
+                        {
+                            "value": 1,
+                            "text": "正常"
+                        },
+                        {
+                            "value": 0,
+                            "text": "未授权"
+                        },
+                        {
+                            "value": -1,
+                            "text": "删除"
+                        }
+                    ]
+                },
+                "last_login_time": {
+                    "title": "最后登陆",
+                    "bsonType": "timestamp",
+                    "description": "最后一次登陆时间",
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "defaultValue": {
+                        "$env": "now"
+                    }
+                },
+                "create_at": {
+                    "title": "创建时间",
+                    "bsonType": "timestamp",
+                    "description": "创建时间",
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "defaultValue": {
+                        "$env": "now"
+                    }
+                },
+                "update_at": {
+                    "title": "更新时间",
+                    "bsonType": "timestamp",
+                    "description": "更新时间",
+                    "permission": {
+                        "read": true,
+                        "write": false
+                    },
+                    "componentForShow": {
+                        "name": "uni-dateformat"
+                    },
+                    "forceDefaultValue": {
+                        "$env": "now"
+                    }
+                }
+            }
+        }
+    }
 }
