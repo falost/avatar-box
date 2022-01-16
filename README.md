@@ -13,13 +13,13 @@
 
 ### 食用方式
  
-1、clone 项目到本地
+1、clone 项目到本地 `git clone https://github.com/falost/avatar-box.git`
 
 2、使用 HbuilderX 导入项目
 
-3、运行安装相关模块
+3、运行安装相关 node 模块 `npm run install`
 
-4、修改 setting.js 中的 STATIC_DEV 的路径为你的静态资源路径
+4、修改 setting.js 中的 STATIC_DEV 的路径为你的静态资源路径（可不修改）
 
 5、点击工具的运行到微信小程序中
 
@@ -43,6 +43,12 @@
 
 ### 小程序开发交流群
 
-如果群过期了, 可以添加微信拉你进群
+如果群过期了, 可以添加微信并备注：小程序 拉你进群
 
-![微信交流群](https://falost.gitee.io/static/falost/20211217223700.png)
+#### 如果觉得有用，不妨给点个 star 吧！
+
+### 相关文章
+
+[uniapp云开发头像边框小程序和红包封面小程序](https://juejin.cn/post/7049037420670484511)
+
+
