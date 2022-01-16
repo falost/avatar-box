@@ -15,13 +15,13 @@
  
 1、clone 项目到本地 `git clone https://github.com/falost/avatar-box.git`
 
-2、使用 HbuilderX 导入项目
+2、使用 HbuilderX 导入项目 `文件 - 导入 - 从Git导入`
 
 3、运行安装相关 node 模块 `npm run install`
 
 4、修改 setting.js 中的 STATIC_DEV 的路径为你的静态资源路径（可不修改）
 
-5、点击工具的运行到微信小程序中
+5、点击工具的运行到微信小程序中 `运行 - 运行到小程序模拟器 - 微信开发工具`
 
 ### 注意问题
 
@@ -29,6 +29,7 @@
 
 2、选择 database 目录下的 db_init.json 文件 进行导入数据
 
+3、再导入数据的时候，需要填写对应的 wxSecret 和 wxAppId，否则无法登陆
 
 ### 使用帮助
 
