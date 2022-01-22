@@ -27,9 +27,11 @@
 
 1、因为使用了 uni-app 云开发，所以需要先关联云空间，个人使用的是阿里云空间
 
-2、选择 database 目录下的 db_init.json 文件 进行导入数据
+2、在项目目录中找到 database 目录下的 db_init.json 文件 右键进行初始化导入数据
 
-3、再导入数据的时候，需要填写对应的 wxSecret 和 wxAppId，否则无法登陆
+3、再导入数据的时候，需要填写 wz_config 表中对应的 wxSecret 和 wxAppId，否则无法登陆
+
+4、如果你的小程序没有绑定微信开放平台，请在 云函数 user_auth 中设置 ISOPEN 常量为 false 默认为 true 
 
 ### 使用帮助
 

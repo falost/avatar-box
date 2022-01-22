@@ -5,6 +5,7 @@ const uniAccount = require('uni-account');
 const {
 	getConfigKey
 } = require('utils')
+const ISOPEN = true
 exports.main = async (event, context) => {
 	let appId
 	let appSecret
@@ -39,25 +40,22 @@ exports.main = async (event, context) => {
 		})
 	}
 	let res = await uniAccountIns.code2Session(code);
+	console.log('res',res )
 	let timeStamp = new Date().getTime()
-	// let user = await db.collection('wz_user').where({
-	// 	unionid: res.unionid,
-	// 	openid: res.openid
-	// }).get();
-	let user = await db.collection('wz_user').where(dbCmd.or([
-		{
-			unionid: res.unionid
-		},
-		{
-			openid: res.openid
-		}
-	])).get();
+	const where = {
+		openid: res.openid
+	}
+	if (ISOPEN) {
+		where.unionid = res.unionid
+	}
+	let user = await db.collection('wz_user').where(where).get();
+	console.log(user)
 	let newdate = {};
 	// 判断用户是否存在
 	if (user.data.length === 0) {
 		let newdate = {
-			openid: res.openid,
-			unionid: res.unionid,
+			openid: res.openid || '',
+			unionid: res.unionid || '',
 			name,
 			avatar: avatarUrl,
 			score: 0,
@@ -133,16 +131,13 @@ exports.main = async (event, context) => {
 		}
 	}
 	let account = user.data[0]
-	if (account && !account.unionid) {
+	if (account && !account.unionid && res.unionid) {
 		await db.collection('wz_user').doc(account._id).update({
 			unionid: res.unionid
 		})
 	}
 	// 查询最新的数据
-	let result = await db.collection('wz_user').where({
-		openid: res.openid,
-		unionid: res.unionid,
-	}).field({
+	let result = await db.collection('wz_user').where(where).field({
 		name: true,
 		avatar: true,
 		score: true,
